@@ -1,0 +1,36 @@
+# Supabase local development configuration.
+# Run `supabase start` to spin up a local stack, then `supabase db reset`
+# to apply migrations + seed.sql. For a hosted project, use `supabase link`
+# then `supabase db push`.
+
+project_id = "ai-physique-coach"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "sculptix://"
+additional_redirect_urls = ["sculptix://", "exp://"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false # set true in production to require email verification
+
+[storage]
+enabled = true
+file_size_limit = "10MiB"

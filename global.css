@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Light theme is the default; the `.dark` selector is applied
+ * by NativeWind when the color scheme is dark. Values are space-separated RGB
+ * channels so Tailwind's `<alpha-value>` opacity modifiers work.
+ */
+@layer base {
+  :root {
+    --color-background: 248 249 252;
+    --color-surface: 255 255 255;
+    --color-surface-elevated: 255 255 255;
+    --color-border: 228 230 237;
+    --color-primary: 99 102 241;
+    --color-primary-foreground: 255 255 255;
+    --color-accent: 16 185 129;
+    --color-text: 17 19 28;
+    --color-text-muted: 110 116 134;
+    --color-success: 22 163 74;
+    --color-warning: 217 119 6;
+    --color-danger: 220 38 38;
+  }
+
+  .dark:root {
+    --color-background: 11 11 15;
+    --color-surface: 22 23 31;
+    --color-surface-elevated: 30 32 42;
+    --color-border: 42 44 56;
+    --color-primary: 129 140 248;
+    --color-primary-foreground: 12 12 16;
+    --color-accent: 52 211 153;
+    --color-text: 244 245 250;
+    --color-text-muted: 148 154 172;
+    --color-success: 74 222 128;
+    --color-warning: 251 191 36;
+    --color-danger: 248 113 113;
+  }
+}
