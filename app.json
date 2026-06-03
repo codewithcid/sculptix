@@ -20,7 +20,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#0B0B0F"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.sculptix.app"
@@ -41,13 +43,18 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow Sculptix to access your photos so you can upload progress pictures."
+          "photosPermission": "Allow Sculptix to access your photos so you can upload progress pictures.",
+          "cameraPermission": false,
+          "microphonePermission": false
         }
       ]
     ],
     "extra": {
       "supabaseUrl": "",
-      "supabaseAnonKey": ""
+      "supabaseAnonKey": "",
+      "eas": {
+        "projectId": "6b1e91ed-c85d-4960-910a-5acd0cca32ba"
+      }
     }
   }
 }
