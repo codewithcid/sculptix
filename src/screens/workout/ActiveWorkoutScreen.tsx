@@ -81,6 +81,7 @@ export function ActiveWorkoutScreen({ route, navigation }: Props) {
       setElapsed(Math.floor((Date.now() - session.startedAtMs) / 1000));
     }, 1000);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session?.startedAtMs]);
 
   if (!day || !session) {

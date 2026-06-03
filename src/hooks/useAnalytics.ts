@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import type { Profile } from '@/types';
 import { calcMacroTargets, type NutritionInput } from '@/engine';
 import {
   computeWeightTrend,
@@ -60,10 +59,5 @@ export function useMacroTargets() {
       daysPerWeek: profile.daysPerWeek,
     };
     return calcMacroTargets(input);
-  }, [profileKey(profile)]);
-}
-
-function profileKey(p: Profile | null | undefined) {
-  if (!p) return '';
-  return [p.weightKg, p.heightCm, p.age, p.gender, p.primaryGoal, p.daysPerWeek].join('|');
+  }, [profile]);
 }
