@@ -26,7 +26,7 @@
     "expo": "~51.0.28",
     "expo-constants": "~16.0.2",
     "expo-image": "~1.13.0",
-    "expo-image-picker": "~15.0.7",
+    "expo-image-picker": "~15.1.0",
     "expo-linking": "~6.3.1",
     "expo-secure-store": "~13.0.2",
     "expo-status-bar": "~1.12.1",
@@ -59,6 +59,13 @@
   },
   "overrides": {
     "react-native-css-interop": "0.1.22"
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "typescript"
+      ]
+    }
   },
   "private": true
 }
