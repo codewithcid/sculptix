@@ -1,21 +1,20 @@
 /**
- * Centralised, validated environment access. Expo inlines any variable
- * prefixed with EXPO_PUBLIC_ at build time, so these are available on-device.
+ * Centralised, validated environment access.
+ *
+ * IMPORTANT: Expo only inlines `EXPO_PUBLIC_*` vars that are accessed
+ * *statically* (e.g. `process.env.EXPO_PUBLIC_SUPABASE_URL`). Dynamic access
+ * like `process.env[key]` is NOT inlined and resolves to undefined on-device,
+ * so every variable must be referenced by its literal name below. We fall back
+ * to app.json `extra` for convenience.
  */
 import Constants from 'expo-constants';
 
-function read(key: string): string | undefined {
-  // Prefer process.env (EXPO_PUBLIC_*), fall back to app.json `extra`.
-  const fromProcess = process.env[key];
-  if (fromProcess) return fromProcess;
-  const extra = (Constants.expoConfig?.extra ?? {}) as Record<string, string | undefined>;
-  return extra[key];
-}
+const extra = (Constants.expoConfig?.extra ?? {}) as Record<string, string | undefined>;
 
 export const ENV = {
-  supabaseUrl: read('EXPO_PUBLIC_SUPABASE_URL') ?? read('supabaseUrl') ?? '',
-  supabaseAnonKey: read('EXPO_PUBLIC_SUPABASE_ANON_KEY') ?? read('supabaseAnonKey') ?? '',
-  exerciseMediaBase: read('EXPO_PUBLIC_EXERCISE_MEDIA_BASE') ?? '',
+  supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? extra.supabaseUrl ?? '',
+  supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? extra.supabaseAnonKey ?? '',
+  exerciseMediaBase: process.env.EXPO_PUBLIC_EXERCISE_MEDIA_BASE ?? '',
 };
 
 /** True when Supabase credentials are present. Screens can degrade gracefully. */

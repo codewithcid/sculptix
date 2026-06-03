@@ -106,7 +106,7 @@ function buildDay(
 
   // Track how many slots each muscle has consumed so the first is a compound.
   const perMuscleCount = new Map<MuscleGroup, number>();
-  const built: Array<ProgrammedExercise & { pattern: 'compound' | 'isolation' }> = [];
+  const built: (ProgrammedExercise & { pattern: 'compound' | 'isolation' })[] = [];
 
   for (const muscle of slots) {
     const nth = perMuscleCount.get(muscle) ?? 0;
